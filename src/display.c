@@ -19,12 +19,11 @@ static int findLength(int number)
     return length;
 }
 
-
-void printBoard(int board[BOARD_SIZE][BOARD_SIZE],int score,int highScore){
+void printBoard(const Game *game){
     printf("\n");
     printf("\t\t\t\t\t===============2048==============\n");
-    printf("\t\t\t\t\tYOUR SCORE=%d\n", score);
-    printf("\t\t\t\t\tHIGH SCORE=%d\n", highScore);
+    printf("\t\t\t\t\tYOUR SCORE=%d\n", game->score);
+    printf("\t\t\t\t\tHIGH SCORE=%d\n", game->highScore);
     printf("\t\t\t\t\t---------------------------------\n");
 
     for (int i = 0; i < BOARD_SIZE; i++) {
@@ -35,15 +34,15 @@ void printBoard(int board[BOARD_SIZE][BOARD_SIZE],int score,int highScore){
                 printf("\t\t\t\t\t|");
             }
 
-            if (board[i][j] != 0) {
+            if (game->board[i][j] != 0) {
 
-                int length = findLength(board[i][j]);
+                int length = findLength(game->board[i][j]);
 
                 for (int k = 0; k < 4 - length; k++) {
                     printf(" ");
                 }
 
-                printf("%d", board[i][j]);
+                printf("%d", game->board[i][j]);
 
                 for (int k = 0; k < 4 - length; k++) {
                     printf(" ");

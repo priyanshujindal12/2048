@@ -1,18 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "display.h"
+
 #include "board.h"
+#include "display.h"
+#include "game.h"
 
-
-int main(void){
+int main(void)
+{
     srand((unsigned int)time(NULL));
-    int board[BOARD_SIZE][BOARD_SIZE];
-    initializeBoard(board);
-    addRandomTile(board);
-    addRandomTile(board);
-    int score = 0;
-    int highScore = 0;
-    printBoard(board, score, highScore);
+
+    Game game;
+
+    initializeGame(&game);
+
+    addRandomTile(game.board);
+    addRandomTile(game.board);
+
+    printBoard(&game);
+
+    printf("\nTesting move left...\n");
+
+    moveLeft(&game);
+
+    printBoard(&game);
+
+    printf("\nScore: %d\n", game.score);
+    printf("High Score: %d\n", game.highScore);
+
     return 0;
 }

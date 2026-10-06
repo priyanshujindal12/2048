@@ -3,11 +3,19 @@
 
 #include "board.h"
 
-int moveLeft(int board[BOARD_SIZE][BOARD_SIZE]);
-int moveRight(int board[BOARD_SIZE][BOARD_SIZE]);
-int moveUp(int board[BOARD_SIZE][BOARD_SIZE]);
-int moveDown(int board[BOARD_SIZE][BOARD_SIZE]);
+typedef struct {
+    int board[BOARD_SIZE][BOARD_SIZE];
+    int score;
+    int highScore;
+} Game;
 
-int isGameOver(int board[BOARD_SIZE][BOARD_SIZE]);
+void initializeGame(Game *game);
+
+int moveLeft(Game *game);
+int moveRight(Game *game);
+int moveUp(Game *game);
+int moveDown(Game *game);
+
+int isGameOver(const Game *game);
 
 #endif
